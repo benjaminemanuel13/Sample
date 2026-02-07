@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "KYJUqSSyx+w=",
+  "success": true,
+  "projectFilePath": "c:\\Users\\benja\\source\\Anti\\Sample\\src\\AgentDesigner.Domain\\AgentDesigner.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\benja\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}

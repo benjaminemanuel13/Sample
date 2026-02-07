@@ -1,0 +1,15 @@
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\bin\Debug\net10.0\AgentDesigner.Infrastructure.deps.json
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\bin\Debug\net10.0\AgentDesigner.Infrastructure.dll
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\bin\Debug\net10.0\AgentDesigner.Infrastructure.pdb
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\bin\Debug\net10.0\AgentDesigner.Domain.dll
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\bin\Debug\net10.0\AgentDesigner.Domain.pdb
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\AgentDesigner.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\AgentDesigner.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\AgentDesigner.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\AgentDesigner.Infrastructure.AssemblyInfo.cs
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\AgentDesigner.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\AgentDes.C0B56B1E.Up2Date
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\AgentDesigner.Infrastructure.dll
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\refint\AgentDesigner.Infrastructure.dll
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\AgentDesigner.Infrastructure.pdb
+C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Infrastructure\obj\Debug\net10.0\ref\AgentDesigner.Infrastructure.dll

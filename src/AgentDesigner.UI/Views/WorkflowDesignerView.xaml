@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AgentDesigner.UI.ViewModels"
+             x:Class="AgentDesigner.UI.Views.WorkflowDesignerView"
+             x:DataType="vm:WorkflowDesignerViewModel"
+             Title="Workflow Designer">
+
+    <Grid RowDefinitions="Auto,*">
+        <!-- Toolbar -->
+        <Border Grid.Row="0" 
+                BackgroundColor="{StaticResource Gray100}"
+                Padding="10"
+                Margin="0,0,0,5">
+            <HorizontalStackLayout Spacing="10">
+                <Label Text="Add Nodes:" 
+                       VerticalOptions="Center"
+                       FontAttributes="Bold"/>
+                <Button Text="+ Agent" 
+                        Command="{Binding AddAgentNodeCommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White"
+                        Padding="10,5"/>
+                <Button Text="+ Function" 
+                        Command="{Binding AddFunctionNodeCommand}"
+                        BackgroundColor="{StaticResource Secondary}"
+                        TextColor="White"
+                        Padding="10,5"/>
+                <Button Text="+ Input" 
+                        Command="{Binding AddInputNodeCommand}"
+                        BackgroundColor="{StaticResource Tertiary}"
+                        TextColor="White"
+                        Padding="10,5"/>
+                <Button Text="+ Output" 
+                        Command="{Binding AddOutputNodeCommand}"
+                        BackgroundColor="{StaticResource Tertiary}"
+                        TextColor="White"
+                        Padding="10,5"/>
+                
+                <BoxView WidthRequest="2" 
+                         BackgroundColor="{StaticResource Gray300}"
+                         Margin="10,0"/>
+                
+                <Button Text="🗑️ Delete" 
+                        Command="{Binding DeleteNodeCommand}"
+                        BackgroundColor="{StaticResource Gray200}"
+                        TextColor="{StaticResource Gray900}"
+                        Padding="10,5"/>
+                
+                <BoxView WidthRequest="2" 
+                         BackgroundColor="{StaticResource Gray300}"
+                         Margin="10,0"/>
+                
+                <Button Text="🔍+" 
+                        Command="{Binding ZoomInCommand}"
+                        BackgroundColor="{StaticResource Gray200}"
+                        TextColor="{StaticResource Gray900}"
+                        Padding="10,5"/>
+                <Button Text="🔍-" 
+                        Command="{Binding ZoomOutCommand}"
+                        BackgroundColor="{StaticResource Gray200}"
+                        TextColor="{StaticResource Gray900}"
+                        Padding="10,5"/>
+                <Button Text="Reset View" 
+                        Command="{Binding ResetZoomCommand}"
+                        BackgroundColor="{StaticResource Gray200}"
+                        TextColor="{StaticResource Gray900}"
+                        Padding="10,5"/>
+                
+                <Label Text="{Binding CanvasZoom, StringFormat='Zoom: {0:P0}'}"
+                       VerticalOptions="Center"
+                       Margin="10,0,0,0"
+                       TextColor="{StaticResource Gray600}"/>
+            </HorizontalStackLayout>
+        </Border>
+
+        <!-- Canvas Area -->
+        <Border Grid.Row="1" 
+                Stroke="{StaticResource Gray300}"
+                StrokeThickness="1"
+                BackgroundColor="White">
+            <ScrollView HorizontalScrollBarVisibility="Always"
+                        VerticalScrollBarVisibility="Always">
+                <AbsoluteLayout x:Name="WorkflowCanvas"
+                                WidthRequest="2000"
+                                HeightRequest="2000"
+                                BackgroundColor="#F8F9FA">
+
+                    <!-- Nodes will be added dynamically here -->
+                    <CollectionView ItemsSource="{Binding Nodes}"
+                                    AbsoluteLayout.LayoutBounds="0,0,2000,2000"
+                                    AbsoluteLayout.LayoutFlags="None">
+                        <CollectionView.ItemsLayout>
+                            <AbsoluteLayout />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border Stroke="{StaticResource Primary}"
+                                        StrokeThickness="2"
+                                        BackgroundColor="White"
+                                        Padding="15"
+                                        AbsoluteLayout.LayoutBounds="{Binding X}, {Binding Y}, 150, 80"
+                                        AbsoluteLayout.LayoutFlags="None">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" 
+                                                Offset="2,2" 
+                                                Radius="5" 
+                                                Opacity="0.3"/>
+                                    </Border.Shadow>
+                                    <VerticalStackLayout Spacing="5">
+                                        <Label Text="{Binding NodeType}"
+                                               FontSize="10"
+                                               TextColor="{StaticResource Gray600}"
+                                               FontAttributes="Bold"/>
+                                        <Label Text="{Binding Name}"
+                                               FontSize="14"
+                                               FontAttributes="Bold"/>
+                                        <Label Text="{Binding Id, StringFormat='ID: {0:N}'}"
+                                               FontSize="8"
+                                               TextColor="{StaticResource Gray500}"/>
+                                    </VerticalStackLayout>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </AbsoluteLayout>
+            </ScrollView>
+        </Border>
+    </Grid>
+
+</ContentPage>
