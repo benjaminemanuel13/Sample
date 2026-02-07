@@ -114,6 +114,12 @@ public partial class WorkflowNode : CommunityToolkit.Mvvm.ComponentModel.Observa
     private double _y;
 
     /// <summary>
+    /// Multi-line prompt text for the node.
+    /// </summary>
+    [CommunityToolkit.Mvvm.ComponentModel.ObservableProperty]
+    private string _prompt = string.Empty;
+
+    /// <summary>
     /// Width of the node (for layout).
     /// </summary>
     public double Width { get; set; } = 200;

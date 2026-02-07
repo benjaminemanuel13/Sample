@@ -30,8 +30,16 @@
                              BackgroundColor="White" 
                              Opacity="0.5"
                              Margin="5,0"/>
+                    <BoxView WidthRequest="2" 
+                             BackgroundColor="White" 
+                             Opacity="0.5"
+                             Margin="5,0"/>
                     <Button Text="New Workflow" 
                             Command="{Binding NewWorkflowCommand}"
+                            BackgroundColor="{StaticResource Tertiary}"
+                            TextColor="White"/>
+                    <Button Text="New Data Model" 
+                            Command="{Binding NewDataModelCommand}"
                             BackgroundColor="{StaticResource Tertiary}"
                             TextColor="White"/>
                 </HorizontalStackLayout>
@@ -276,9 +284,17 @@
                             
                             <VerticalStackLayout Spacing="5">
                                 <Label Text="Name" FontSize="12" TextColor="{StaticResource Gray600}"/>
-                                <Entry Text="{Binding Name, Mode=TwoWay}" 
+                                <Entry Text="{Binding Source={x:Reference MainPage}, Path=BindingContext.WorkflowDesigner.SelectedNodeName, Mode=TwoWay}" 
                                        BackgroundColor="White"
                                        TextColor="Black"/>
+                            </VerticalStackLayout>
+                            
+                            <VerticalStackLayout Spacing="5">
+                                <Label Text="Prompt" FontSize="12" TextColor="{StaticResource Gray600}"/>
+                                <Editor Text="{Binding Source={x:Reference MainPage}, Path=BindingContext.WorkflowDesigner.SelectedNodePrompt, Mode=TwoWay}" 
+                                        HeightRequest="150"
+                                        BackgroundColor="White"
+                                        TextColor="Black"/>
                             </VerticalStackLayout>
                             
                              <VerticalStackLayout Spacing="5">
@@ -373,7 +389,7 @@
 
                              <VerticalStackLayout Spacing="5">
                                 <Label Text="Description" FontSize="12" TextColor="{StaticResource Gray600}"/>
-                                <Editor Text="{Binding Description, Mode=TwoWay}" 
+                                <Editor Text="{Binding Source={x:Reference MainPage}, Path=BindingContext.WorkflowDesigner.SelectedNodeDescription, Mode=TwoWay}" 
                                         AutoSize="TextChanges"
                                         BackgroundColor="White"
                                         TextColor="Black"/>

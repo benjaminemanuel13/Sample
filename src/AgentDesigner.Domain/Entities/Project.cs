@@ -41,6 +41,11 @@ public class Project
     public List<Workflow> Workflows { get; set; } = [];
 
     /// <summary>
+    /// List of data models (domain entities) in the project.
+    /// </summary>
+    public List<DomainModel> Models { get; set; } = [];
+
+    /// <summary>
     /// Project-level settings as JSON.
     /// </summary>
     public string Settings { get; set; } = "{}";

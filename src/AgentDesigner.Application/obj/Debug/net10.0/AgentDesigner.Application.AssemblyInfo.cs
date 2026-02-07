@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgentDesigner.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c12182987f9c76aec8b44e4935f0f28e054a42c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgentDesigner.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgentDesigner.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

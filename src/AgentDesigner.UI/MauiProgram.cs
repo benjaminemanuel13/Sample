@@ -39,10 +39,12 @@ public static class MauiProgram
         // Register ViewModels
         builder.Services.AddTransient<MainViewModel>();
         builder.Services.AddTransient<WorkflowDesignerViewModel>();
+        builder.Services.AddTransient<ModelDesignerViewModel>();
 
         // Register Views
         builder.Services.AddTransient<MainView>();
         builder.Services.AddTransient<WorkflowDesignerView>();
+        builder.Services.AddTransient<ModelDesignerView>();
 
 #if DEBUG
 		builder.Logging.AddDebug();

@@ -162,4 +162,28 @@ public partial class MainViewModel : ObservableObject
     {
         ShowWorkflowDesigner = false;
     }
+
+    [RelayCommand]
+    private async Task NewDataModel()
+    {
+        if (CurrentProject == null)
+        {
+            StatusMessage = "Please create or open a project first";
+            return;
+        }
+
+        var model = new DomainModel
+        {
+            Name = "New Model",
+            Description = "A new data domain model"
+        };
+        CurrentProject.Models.Add(model);
+        await _projectRepository.UpdateAsync(CurrentProject);
+
+        // Pass model to designer
+        _navigationService.SetCurrentModel(model);
+        await _navigationService.NavigateToAsync(nameof(Views.ModelDesignerView));
+
+        StatusMessage = $"Created data model: {model.Name}";
+    }
 }

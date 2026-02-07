@@ -10,3 +10,4 @@ C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Domain\obj\Debug\net10.0\Age
 C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Domain\obj\Debug\net10.0\refint\AgentDesigner.Domain.dll
 C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Domain\obj\Debug\net10.0\AgentDesigner.Domain.pdb
 C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Domain\obj\Debug\net10.0\ref\AgentDesigner.Domain.dll
+c:\Users\benja\source\Anti\Sample\src\AgentDesigner.Domain\obj\Debug\net10.0\AgentDesigner.Domain.sourcelink.json

@@ -43,8 +43,49 @@ public partial class WorkflowDesignerViewModel : ObservableObject, IDrawable
         }
         else
         {
-            SelectedAgentItem = null;
             SelectedInputItem = null;
+        }
+        OnPropertyChanged(nameof(SelectedNodePrompt));
+        OnPropertyChanged(nameof(SelectedNodeName));
+        OnPropertyChanged(nameof(SelectedNodeDescription));
+    }
+
+    public string SelectedNodePrompt
+    {
+        get => SelectedNode?.Prompt ?? string.Empty;
+        set
+        {
+            if (SelectedNode != null && SelectedNode.Prompt != value)
+            {
+                SelectedNode.Prompt = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public string SelectedNodeName
+    {
+        get => SelectedNode?.Name ?? string.Empty;
+        set
+        {
+            if (SelectedNode != null && SelectedNode.Name != value)
+            {
+                SelectedNode.Name = value;
+                OnPropertyChanged();
+            }
+        }
+    }
+
+    public string SelectedNodeDescription
+    {
+        get => SelectedNode?.Description ?? string.Empty;
+        set
+        {
+            if (SelectedNode != null && SelectedNode.Description != value)
+            {
+                SelectedNode.Description = value;
+                OnPropertyChanged();
+            }
         }
     }
 

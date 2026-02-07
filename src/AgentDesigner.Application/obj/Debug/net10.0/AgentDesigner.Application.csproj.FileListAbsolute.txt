@@ -15,3 +15,4 @@ C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Application\obj\Debug\net10.
 C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Application\obj\Debug\net10.0\refint\AgentDesigner.Application.dll
 C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Application\obj\Debug\net10.0\AgentDesigner.Application.pdb
 C:\Users\benja\source\Anti\Sample\src\AgentDesigner.Application\obj\Debug\net10.0\ref\AgentDesigner.Application.dll
+c:\Users\benja\source\Anti\Sample\src\AgentDesigner.Application\obj\Debug\net10.0\AgentDesigner.Application.sourcelink.json
