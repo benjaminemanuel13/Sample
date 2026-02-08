@@ -136,14 +136,30 @@ public class AssemblyGenerationService
         sb.AppendLine("using OpenAI.Chat;");
         sb.AppendLine();
 
-        // Generate AgentBase class
+        // Generate AgentBase class with Azure OpenAI client
         sb.AppendLine("public abstract class AgentBase");
         sb.AppendLine("{");
-        sb.AppendLine("    public AgentBase() { }");
+        sb.AppendLine("    protected AzureOpenAIClient _client;");
+        sb.AppendLine();
+        sb.AppendLine("    public AgentBase()");
+        sb.AppendLine("    {");
+        sb.AppendLine("        var endpoint = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_ENDPOINT\");");
+        sb.AppendLine("        var apiKey = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_API_KEY\");");
+        sb.AppendLine("        _client = new AzureOpenAIClient(new Uri(endpoint!), new AzureKeyCredential(apiKey!));");
+        sb.AppendLine("    }");
         sb.AppendLine();
         sb.AppendLine("    public virtual void Ask(string prompt)");
         sb.AppendLine("    {");
-        sb.AppendLine("        Console.WriteLine(\"Base Ask: \" + prompt);");
+        sb.AppendLine("        var deployment = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_CHAT_DEPLOYMENT_NAME\");");
+        sb.AppendLine("        var chatClient = _client.GetChatClient(deployment!);");
+        sb.AppendLine();
+        sb.AppendLine("        var messages = new List<ChatMessage>");
+        sb.AppendLine("        {");
+        sb.AppendLine("            ChatMessage.CreateUserMessage(prompt)");
+        sb.AppendLine("        };");
+        sb.AppendLine();
+        sb.AppendLine("        var response = chatClient.CompleteChat(messages);");
+        sb.AppendLine("        Console.WriteLine(response.Value.Content[0].Text);");
         sb.AppendLine("    }");
         sb.AppendLine("}");
         sb.AppendLine();
@@ -170,34 +186,10 @@ public class AssemblyGenerationService
                 className = $"Agent_{agentNode.Id.ToString().Replace("-", "")}";
             }
 
+            // Derived classes now just inherit from AgentBase
             sb.AppendLine($"public class {className} : AgentBase");
             sb.AppendLine("{");
-            sb.AppendLine("    private AzureOpenAIClient _client;");
-            sb.AppendLine();
-
-            // Constructor
-            sb.AppendLine($"    public {className}()");
-            sb.AppendLine("    {");
-            sb.AppendLine("        var endpoint = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_ENDPOINT\");");
-            sb.AppendLine("        var apiKey = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_API_KEY\");");
-            sb.AppendLine("        _client = new AzureOpenAIClient(new Uri(endpoint!), new AzureKeyCredential(apiKey!));");
-            sb.AppendLine("    }");
-            sb.AppendLine();
-
-            // Ask method
-            sb.AppendLine("    public override void Ask(string prompt)");
-            sb.AppendLine("    {");
-            sb.AppendLine("        var deployment = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_CHAT_DEPLOYMENT_NAME\");");
-            sb.AppendLine("        var chatClient = _client.GetChatClient(deployment!);");
-            sb.AppendLine();
-            sb.AppendLine("        var messages = new List<ChatMessage>");
-            sb.AppendLine("        {");
-            sb.AppendLine("            ChatMessage.CreateUserMessage(prompt)");
-            sb.AppendLine("        };");
-            sb.AppendLine();
-            sb.AppendLine("        var response = chatClient.CompleteChat(messages);");
-            sb.AppendLine("        Console.WriteLine(response.Value.Content[0].Text);");
-            sb.AppendLine("    }");
+            sb.AppendLine($"    public {className}() : base() {{ }}");
             sb.AppendLine("}");
             sb.AppendLine();
         }
