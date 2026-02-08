@@ -35,6 +35,18 @@ public class NavigationService
         return model;
     }
 
+    private Project? _currentProject;
+
+    public void SetCurrentProject(Project project)
+    {
+        _currentProject = project;
+    }
+
+    public Project? GetCurrentProject()
+    {
+        return _currentProject; // Don't clear, as it's needed across multiple operations
+    }
+
     public Task NavigateToAsync(string route)
     {
         return Shell.Current.GoToAsync(route);

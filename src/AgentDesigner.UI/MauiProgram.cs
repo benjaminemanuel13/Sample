@@ -31,6 +31,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<FunctionAssemblyLoader>();
         builder.Services.AddSingleton<NavigationService>();
         builder.Services.AddSingleton<SqliteMetadataRepository>();
+        builder.Services.AddSingleton<AgentDesigner.Infrastructure.Services.AssemblyGenerationService>();
 
         // Register application services
         builder.Services.AddSingleton<FunctionCompilationService>();

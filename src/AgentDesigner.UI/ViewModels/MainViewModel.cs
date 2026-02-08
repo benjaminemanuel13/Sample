@@ -52,6 +52,7 @@ public partial class MainViewModel : ObservableObject
         };
 
         await _projectRepository.CreateAsync(CurrentProject);
+        _navigationService.SetCurrentProject(CurrentProject);
         StatusMessage = $"Created new project: {CurrentProject.Name}";
     }
 
@@ -73,6 +74,7 @@ public partial class MainViewModel : ObservableObject
             {
                 var project = await _projectRepository.LoadFromFileAsync(result.FullPath);
                 CurrentProject = project;
+                _navigationService.SetCurrentProject(project);
                 StatusMessage = $"Loaded project: {project.Name}";
 
                 // Load first workflow if exists

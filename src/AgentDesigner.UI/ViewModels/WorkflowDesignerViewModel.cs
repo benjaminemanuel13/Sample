@@ -18,6 +18,7 @@ public partial class WorkflowDesignerViewModel : ObservableObject, IDrawable
 {
     private readonly NavigationService _navigationService;
     private readonly SqliteMetadataRepository _metadataRepository;
+    private readonly AgentDesigner.Infrastructure.Services.AssemblyGenerationService _assemblyGenerationService;
 
     [ObservableProperty]
     private Workflow? _currentWorkflow;
@@ -135,10 +136,14 @@ public partial class WorkflowDesignerViewModel : ObservableObject, IDrawable
     public PointF TempConnectionStart { get; set; }
     public PointF TempConnectionEnd { get; set; }
 
-    public WorkflowDesignerViewModel(NavigationService navigationService, SqliteMetadataRepository metadataRepository)
+    public WorkflowDesignerViewModel(
+        NavigationService navigationService,
+        SqliteMetadataRepository metadataRepository,
+        AgentDesigner.Infrastructure.Services.AssemblyGenerationService assemblyGenerationService)
     {
         _navigationService = navigationService;
         _metadataRepository = metadataRepository;
+        _assemblyGenerationService = assemblyGenerationService;
 
         LoadMetadata();
     }
@@ -318,6 +323,30 @@ public partial class WorkflowDesignerViewModel : ObservableObject, IDrawable
 
         IsWorkflowExecuting = true;
         _executingNodeIds.Clear();
+
+        // Generate Agent.dll assembly using Mono.Cecil
+        try
+        {
+            var project = _navigationService.GetCurrentProject();
+            if (project?.FilePath != null)
+            {
+                var projectDirectory = Path.GetDirectoryName(project.FilePath);
+                var assemblyPath = Path.Combine(projectDirectory!, "Agent.dll");
+
+                _assemblyGenerationService.GenerateWorkflowAssembly(CurrentWorkflow, assemblyPath);
+
+                var dllCount = Directory.GetFiles(projectDirectory!, "*.dll").Length;
+                await Shell.Current.DisplayAlert("Success",
+                    $"Generated {dllCount} DLL(s) in:\n{projectDirectory}\n\nMain assembly: Agent.dll",
+                    "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            await Shell.Current.DisplayAlert("Error", $"Failed to generate assembly: {ex.Message}", "OK");
+            IsWorkflowExecuting = false;
+            return;
+        }
 
         // Find Start Node (InputNode)
         var startNode = Nodes.FirstOrDefault(n => n.NodeType == NodeType.InputNode);
