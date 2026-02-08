@@ -1,3 +1,5 @@
+using System.Collections.ObjectModel;
+
 namespace AgentDesigner.Domain.Entities;
 
 /// <summary>
@@ -28,22 +30,22 @@ public class Project
     /// <summary>
     /// List of agents in the project.
     /// </summary>
-    public List<Agent> Agents { get; set; } = [];
+    public ObservableCollection<Agent> Agents { get; set; } = [];
 
     /// <summary>
     /// List of functions in the project.
     /// </summary>
-    public List<Function> Functions { get; set; } = [];
+    public ObservableCollection<Function> Functions { get; set; } = [];
 
     /// <summary>
     /// List of workflows in the project.
     /// </summary>
-    public List<Workflow> Workflows { get; set; } = [];
+    public ObservableCollection<Workflow> Workflows { get; set; } = [];
 
     /// <summary>
     /// List of data models (domain entities) in the project.
     /// </summary>
-    public List<DomainModel> Models { get; set; } = [];
+    public ObservableCollection<DomainModel> Models { get; set; } = [];
 
     /// <summary>
     /// Project-level settings as JSON.

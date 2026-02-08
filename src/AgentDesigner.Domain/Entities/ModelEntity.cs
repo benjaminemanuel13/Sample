@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Collections.ObjectModel;
 
 namespace AgentDesigner.Domain.Entities;
 
@@ -20,5 +21,5 @@ public partial class ModelEntity : ObservableObject
     [ObservableProperty]
     private string _description = string.Empty;
 
-    public List<EntityProperty> Properties { get; set; } = new();
+    public ObservableCollection<EntityProperty> Properties { get; set; } = [];
 }

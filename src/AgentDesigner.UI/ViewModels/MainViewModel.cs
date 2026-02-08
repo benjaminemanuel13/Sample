@@ -186,4 +186,33 @@ public partial class MainViewModel : ObservableObject
 
         StatusMessage = $"Created data model: {model.Name}";
     }
+
+    [RelayCommand]
+    private async Task OpenDataModel(DomainModel model)
+    {
+        if (model == null) return;
+
+        // Pass model to designer
+        _navigationService.SetCurrentModel(model);
+        await _navigationService.NavigateToAsync(nameof(Views.ModelDesignerView));
+
+        StatusMessage = $"Opened data model: {model.Name}";
+    }
+
+    [RelayCommand]
+    private void OpenWorkflow(Workflow workflow)
+    {
+        if (workflow == null) return;
+
+        // Use navigation service to pass workflow
+        _navigationService.SetCurrentWorkflow(workflow);
+
+        // Load workflow in designer
+        _workflowDesignerViewModel.OnNavigatedTo();
+
+        // Switch to workflow designer view
+        ShowWorkflowDesigner = true;
+
+        StatusMessage = $"Opened workflow: {workflow.Name}";
+    }
 }

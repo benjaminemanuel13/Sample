@@ -1,11 +1,17 @@
-using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace AgentDesigner.Domain.Entities;
 
-public class EntityProperty
+public partial class EntityProperty : ObservableObject
 {
     public Guid Id { get; set; } = Guid.NewGuid();
-    public string Name { get; set; } = "Property";
-    public string Type { get; set; } = "String"; // String, Integer, Double, Boolean, DateTime
-    public bool IsNullable { get; set; } = false;
+
+    [ObservableProperty]
+    private string _name = "Property";
+
+    [ObservableProperty]
+    private string _type = "String"; // String, Integer, Double, Boolean, DateTime
+
+    [ObservableProperty]
+    private bool _isNullable = false;
 }

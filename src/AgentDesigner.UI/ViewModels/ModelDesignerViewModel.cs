@@ -132,6 +132,17 @@ public partial class ModelDesignerViewModel : ObservableObject, IDrawable
         };
         SelectedEntity.Properties.Add(prop);
         OnPropertyChanged(nameof(SelectedEntity)); // Refresh list
+        OnPropertyChanged(nameof(SelectedEntity)); // Refresh list
+        Invalidate();
+    }
+
+    [RelayCommand]
+    private void DeleteProperty(EntityProperty property)
+    {
+        if (SelectedEntity == null || property == null) return;
+
+        SelectedEntity.Properties.Remove(property);
+        OnPropertyChanged(nameof(SelectedEntity));
         Invalidate();
     }
 
