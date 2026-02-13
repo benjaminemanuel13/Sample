@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AgentDesigner.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+938461bdd01a10b57efc4d776df4c54e8b2fa7a9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c775fd90e6844454ea546cfc91e6c5de2ccedf5a")]
 [assembly: System.Reflection.AssemblyProductAttribute("AgentDesigner.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AgentDesigner.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
