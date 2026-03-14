@@ -143,14 +143,14 @@ public class AssemblyGenerationService
         sb.AppendLine();
         sb.AppendLine("    public AgentBase()");
         sb.AppendLine("    {");
-        sb.AppendLine("        var endpoint = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_ENDPOINT\");");
-        sb.AppendLine("        var apiKey = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_API_KEY\");");
+        sb.AppendLine("        var endpoint = Environment.GetEnvironmentVariable(\"AZUREOPENAIENDPOINT\");");
+        sb.AppendLine("        var apiKey = Environment.GetEnvironmentVariable(\"AZUREOPENAIKEY\");");
         sb.AppendLine("        _client = new AzureOpenAIClient(new Uri(endpoint!), new AzureKeyCredential(apiKey!));");
         sb.AppendLine("    }");
         sb.AppendLine();
         sb.AppendLine("    public virtual void Ask(string prompt)");
         sb.AppendLine("    {");
-        sb.AppendLine("        var deployment = Environment.GetEnvironmentVariable(\"AZURE_OPENAI_CHAT_DEPLOYMENT_NAME\");");
+        sb.AppendLine("        var deployment = Environment.GetEnvironmentVariable(\"AZUREOPENAIDEPLOYMENT\");");
         sb.AppendLine("        var chatClient = _client.GetChatClient(deployment!);");
         sb.AppendLine();
         sb.AppendLine("        var messages = new List<ChatMessage>");
