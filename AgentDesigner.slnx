@@ -3,6 +3,7 @@
     <Project Path="src/AgentDesigner.Application/AgentDesigner.Application.csproj" />
     <Project Path="src/AgentDesigner.Domain/AgentDesigner.Domain.csproj" />
     <Project Path="src/AgentDesigner.Infrastructure/AgentDesigner.Infrastructure.csproj" />
+    <Project Path="src/AgentDesigner.Lang/AgentDesigner.Lang.csproj" />
     <Project Path="src/AgentDesigner.UI/AgentDesigner.UI.csproj" />
   </Folder>
   <Folder Name="/tests/">

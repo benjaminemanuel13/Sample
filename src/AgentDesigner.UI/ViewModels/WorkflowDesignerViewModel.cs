@@ -347,6 +347,17 @@ public partial class WorkflowDesignerViewModel : ObservableObject, IDrawable
             IsWorkflowExecuting = false;
             return;
         }
+        
+        IsWorkflowExecuting = false;
+    }
+
+    [RelayCommand]
+    private async Task RunWorkflow()
+    {
+        if (CurrentWorkflow == null || IsWorkflowExecuting) return;
+
+        IsWorkflowExecuting = true;
+        _executingNodeIds.Clear();
 
         // Find Start Node (InputNode)
         var startNode = Nodes.FirstOrDefault(n => n.NodeType == NodeType.InputNode);
